@@ -17,7 +17,7 @@ module.exports = function (passport) {
 	passport.use(new TwitterStrategy({
 			consumerKey: 'lpxd4Q1HLOMoj7VOT10iLh60p',
 			consumerSecret: 'Bk7URgd6mwNPQPFz9zjQZU2pz8WIgA86GHEbHCy3r40xjAmTkE',
-			callbackURL: 'http://127.0.0.1:8080/auth/twitter/callback'
+			callbackURL: 'https://pin--clone.herokuapp.com/auth/twitter/callback'
 		},
 		function (token, refreshToken, profile, done) {
 			process.nextTick(function () {
