@@ -14,7 +14,9 @@ var app = express();
 app.use(cookieParser());
 require('./app/config/passport')(passport);
 
-mongoose.connect("mongodb://admin:admin2020@ds015720.mlab.com:15720/heroku_8mmg8q9c");
+mongoose.connect("127.0.0.1:27017");
+
+// mongoose.connect("mongodb://admin:admin2020@ds015720.mlab.com:15720/heroku_8mmg8q9c");
 // mongoose.connection.on('open', function(){
 //     mongoose.connection.db.dropDatabase(function(err){
 //     console.log(err);
@@ -22,7 +24,7 @@ mongoose.connect("mongodb://admin:admin2020@ds015720.mlab.com:15720/heroku_8mmg8
 // });
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
-app.use('/public', express.static(process.cwd() + '/public'));
+// app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 
 // app.set('view engine', 'ejs');

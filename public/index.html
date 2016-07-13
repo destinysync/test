@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bookea - Exchange Knowledge</title>
+    <title>Pinterest Clone</title>
 
     <!-- Bootstrap -->
     <link href="https://fonts.googleapis.com/css?family=Lobster|Proza+Libre" rel="stylesheet">
@@ -23,49 +23,23 @@
 
 <body>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">PinClone</a>
+        </div>
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/auth/twitter"><span class="glyphicon glyphicon-log-in"></span> Login With Twitter</a></li>
+        </ul>
+    </div>
+</nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-lg-offset-1">
-            <a href="/">
-                <div class="logo">
-                    <h1>
-                        <b class="fstChar">B</b>ookea
-                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                    </h1>
-                    <p class="slogon">
-                        Exchange Books, Exchange Knowledge
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-6">
 
-            <form>
-                <div class="input-group">
-                    <input type="text" name="searchInputBox" class="form-control searchInputBox"
-                           placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-danger btn-lg" type="button"><span class="glyphicon glyphicon-search"
-                                                                  aria-hidden="true"></span></button>
-      </span>
-                </div>
-            </form>
-        </div>
-        
-        
-        <div class="col-lg-1 profileIconDiv">
+    <div class="grid"></div>
 
-        </div>
-    </div>
-
-
-
-<div id='allBookContainer'>
-    
-    
-    
-</div>
 </div>
 
 
@@ -74,6 +48,8 @@
 <script src="js/jquery-1.11.3.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/imagesloaded.pkgd.js"></script>
 <script src="js/main.js"></script>
 </body>
 

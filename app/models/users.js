@@ -11,6 +11,13 @@ var User = new Schema({
 		books: Object,
 		requestsToMe: Object,
 		requestsToOthers: Object
+	},
+	twitter: {
+		id: String,
+		username: String,
+		displayName: String,
+		myPins: Object,
+		usedImgID: Number
 	}
 });
 

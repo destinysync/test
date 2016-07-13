@@ -1,289 +1,92 @@
+* { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+body { font-family: sans-serif; }
+
+/* ---- grid ---- */
+
+.grid {
+    /*background: #DDD;*/
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+    width: 25%;
+}
+
+.grid-item {
+    float: left;
+}
+
+.grid-item img {
+    display: block;
+    max-width: 100%;
+}
+
 body {
-    background: #ffffff url('../img/noise.png') repeat;
-    padding-bottom: 50px;
+    margin: 80px 0 50px 0;
 }
 
-.container {
-    padding-top: 100px;
+#addPinInterface{
+    padding: 20px 20px 20px 20px ;
+    /*position: absolute;*/
+    width: 300px;
 }
 
-.searchInputBox {
-    height: 60px;
-}
-
-.btn-lg {
-    height: 60px;
-}
-
-.glyphicon-search {
-    font-size: 35px;
-}
-
-.glyphicon-book {
-    font-size: 50px !important;
-}
-
-.glyphicon-user {
-    font-size: 20px;
-    display: block;
-}
-
-/*.signInDiv {*/
-    /*text-align: center;*/
-    /*padding: 5px 0;*/
-    /*display: inline-block;*/
-/*}*/
-
-.signIn {
-    margin-top: 10px;
-    display: block;
-    position: relative;
-}
-
-#signUpDes{
-    font-size: 12px;
-    padding: 25px 5px 5px 5px;
-}
-
-.profileIconDiv:hover .signInBox{
-    display: block;
-}
-
-.profileIconDiv:hover .signIconDiv {
-    background-color: #ededed;
-}
-
-.signInBoxDiv{
-    position: relative;
-    padding-top: 10px;
-}
-
-.signInBox {
-    width: 400px;
-    height: 300px;
-    display: none;
-    position: absolute;
+.previewBox{
+    width: 250px;
+    height: 250px;
     border: 1px solid;
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    right: 0;
-    z-index: 999;
-    padding: 40px 50px 40px 50px;
-        background: #ffffff url('../img/noise.png') repeat;
+    margin: 0 0 10px 0;
 }
 
-h1 {
-    font-family: 'Lobster', cursive;
-    margin-top: 0;
-    font-size: 40px;
-    margin-bottom: 0;
+#previewImg, .myPinImg {
+    max-width:100%;
+    max-height:100%
 }
 
-.fstChar {
-    font-size: 60px !important;
-}
-
-.logo {
-    float: right;
+.myPinDiv {
     text-align: center;
-    margin-top: -15px;
-}
-
-.logo h5 {
-    text-align: center;
-}
-
-.searchInputBox {
-    font-size: 25px;
-    font-family: 'Proza Libre', sans-serif;
-}
-
-.searchInputBox:focus {
-    border-color: black;
-box-shadow: none;
-}
-
-.slogon {
-    font-family: 'Proza Libre', sans-serif;
-}
-
-.emailInUseAlert {
-    visibility: hidden;
-    color: red;
-    padding-top: 5px;
-}
-
-.profileIconDiv {
-    text-align: center;
-    padding: 5px 5px 5px 5px;
-}
-
-.logOut {
-    margin-top: 10px;
-    font-family: 'Proza Libre', sans-serif;
-}
-
-.myBooksDiv{
-    margin: 30px 0 0 0;
-}
-
-.bookContainer {
     position: relative;
-    box-shadow: 0px 10px 25px 1px #888888 !important;
-    display: inline-block;
+    height: 300px;
+    overflow: hidden;
 }
 
-.bookContainer:hover .bookContainerBG {
-    display: inline-block;
-    opacity: 0.6;
-    filter: Alpha(opacity=60); /* IE8 and earlier */
-}
-
-.bookContainerBG {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
+.shadowLayer {
     width: 100%;
     height: 100%;
+    background: black;
+    position: absolute;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    display: none;
+}
+
+.delMyPinButton {
+    width: 50px;
+    position: absolute;
+    border: 8px solid red;
+    border-radius: 50%;
+    height: 50px;
+    right: 10px;
+    top: 10px;
     background-color: black;
-}
-
-.bookContainer:hover .deleteButton {
-    display: inline-block;
-}
-
-.deleteButton:hover {
-    color: red;
-}
-
-.deleteButton {
-    cursor: pointer;
-    color: black;
-    text-align: center;
-    display: none;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border-radius: 50%;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-    /*padding: 1px 1px 1px 1px;*/
-}
-
-.header {
-    margin-bottom: 30px;
-}
-
-.bookDiv {
- /*   display: inline-block;*/
- margin-top: 30px;   
-height: 200px;
-}
-
-.profileForm {
-    margin-top: 10px;
-    padding: 30px 30px 30px 30px;
-}
-
-
-#userGeoInfoResetButton, #passwordRestButton {
-    margin: -40px 0 0 30px;
-}
-
-
-.bookContainer:hover .deleteRequestToMeButton {
-    display: inline-block;
-}
-
-.deleteRequestToMeButton:hover {
-    color: red;
-}
-
-.deleteRequestToMeButton {
-    cursor: pointer;
-    color: black;
-    text-align: center;
-    display: none;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border-radius: 50%;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-    /*padding: 1px 1px 1px 1px;*/
-}
-
-.bookContainer:hover .approveRequestToMeButton {
-    display: inline-block;
-}
-
-.approveRequestToMeButton:hover {
-    color: red;
-}
-
-.approveRequestToMeButton {
-    cursor: pointer;
-    color: black;
-    text-align: center;
-    display: none;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    border-radius: 50%;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-    /*padding: 1px 1px 1px 1px;*/
-}
-
-
-
-.bookContainer:hover .delRequestsToOthersButton {
-    display: inline-block;
-}
-
-.delRequestsToOthersButton:hover {
-    color: red;
-}
-
-.delRequestsToOthersButton {
-    cursor: pointer;
-    color: black;
-    text-align: center;
-    display: none;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border-radius: 50%;
-    background-color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-    /*padding: 1px 1px 1px 1px;*/
-}
-
-img {
-    width: 100%;
-}
-
-#unapprovedRequests, #approvedRequests {
-    text-align: center;
-    font-family: 'Rakkas', cursive;
-    margin-top: 30px;
+    color: white;
     font-size: 25px;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    cursor: pointer;
 }
 
-#unapprovedRequests:hover, #approvedRequests:hover {
-        box-shadow: 0px 10px 80px 10px rgba(0,0,0,.175);
-}
+

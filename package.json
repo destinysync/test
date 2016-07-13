@@ -26,16 +26,14 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^1.2.0",
     "ejs": "^2.4.1",
     "express": "^4.12.4",
     "express-session": "^1.11.3",
     "forever": "^0.15.2",
     "mongoose": "^4.1.0",
-    "passport": "^0.3.0",
-    "passport-github": "^1.0.0",
-    "passport-local": "^1.0.0",
-    "underscore": "^1.8.3"
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4"
   }
 }

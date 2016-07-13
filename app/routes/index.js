@@ -3,102 +3,62 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
+
 module.exports = function (app, passport) {
 
-	// function isLoggedIn (req, res, next) {
-	// 	if (req.isAuthenticated()) {
-	// 		return next();
-	// 	} else {
-	// 		res.redirect('/login');
-	// 	}
-	// }
+    // function isLoggedIn (req, res, next) {
+    // 	if (req.isAuthenticated()) {
+    // 		return next();
+    // 	} else {
+    // 		res.redirect('/login');
+    // 	}
+    // }
 
-	var clickHandler = new ClickHandler();
+    var clickHandler = new ClickHandler();
 
-	app.route('/')
-		.get(function (req, res) {
-			res.sendFile(path + '/public/index.html');
-		});
+    app.route('/')
+        .post(clickHandler.renderIndex)
+        .get(function (req, res) {
+            res.sendFile(path + '/public/index.html');
+        });
 
-	app.route('/logout')
-		.get(function (req, res) {
-			req.logout();
-			res.redirect('/');
-		});
+    app.route('/profile')
+        .post(clickHandler.displayMyPins)
+        .get(function (req, res) {
+            if (req.isAuthenticated()) {
+                res.sendFile(path + '/public/profile.html');
+            } else {
+                res.redirect('/');
+            }
+        });
 
-	app.route('/auth/local')
-		.post(passport.authenticate('local', { failureRedirect: '/login' }),
-			function(req, res) {
-				res.redirect('/');
-			});
+    app.route('/removeMyPin/*')
+        .post(clickHandler.removeMyPin);
 
-	app.route('/signInOrSignUp/')
-		.post( passport.authenticate('signup', {
-			successRedirect: '/profile',
-			failureRedirect: '/',
-			failureFlash : true
-		}));
-	
-	app.route('/changeLoginIcon')
-		.post(clickHandler.changeLoginIcon);
-	
-	app.route('/profile')
-		.get(clickHandler.sendProfilePage);
-	
-	
-	app.route('/displayMyBooks')
-	.post(clickHandler.displayMyBooks);
-	
-	app.route('/addBooks/*')
-		.post(clickHandler.addBooks);
-		
-		app.route('/delMyBookFromDB/*')
-		.post(clickHandler.delMyBookFromDB);
-		
-		app.route('/displayAllBooks')
-		.get(clickHandler.displayAllBooks);
-		
-		app.route('/getProfile')
-		.get(clickHandler.getProfile);
-		
-		app.route('/sendTradeRequest/*')
-		.post(clickHandler.sendTradeRequest);
-		
-		app.route('/deleteRequestToMe/*')
-		.post(clickHandler.deleteRequestToMe);
-		
-		app.route('/requestsToOthers')
-		.post(clickHandler.requestsToOthers);
-		
-		app.route('/changePassword/*')
-		.post(clickHandler.changePassword);
-		
-		app.route('/requestsToMe')
-		.post(clickHandler.requestsToMe);
-		
-		app.route('/delRequestsToOthers/*')
-		.post(clickHandler.delRequestsToOthers);
-		
-		app.route('/approveRequestToMe/*')
-		.post(clickHandler.approveRequestToMe);
-		
-		app.route('/getApprovedRequestCouint')
-		.post(clickHandler.getApprovedRequestCouint);
-		
-		
-		app.route('/isAuthenticated')
-		.post(function (req, res) {
-			if (req.isAuthenticated()) {
-				res.json({
-					'auth': 'true',
-					'userID': req.user._id
-				});
-			} else {
-				res.json({
-					'auth': 'false',
-					'userID': 'none'
-				});
-			}
-		})
-	
+    app.route('/auth/twitter')
+        .get(passport.authenticate('twitter'));
+
+    app.route('/auth/twitter/callback')
+        .get(passport.authenticate('twitter', {
+            successRedirect: '/profile',
+            failureRedirect: '/login'
+        }));
+
+    app.route('/logout')
+    	.get(function (req, res) {
+    		req.logout();
+    		res.redirect('/');
+    	});
+
+    app.route('/addPin/*')
+        .post(clickHandler.addPin);
+
+
+    // app.route('/auth/local')
+    // 	.post(passport.authenticate('local', { failureRedirect: '/login' }),
+    // 		function(req, res) {
+    // 			res.redirect('/');
+    // 		});
+
+
 };
