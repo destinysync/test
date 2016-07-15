@@ -36,6 +36,8 @@
     </div>
 </nav>
 
+<button id="updateMyPinsButton">Update</button>
+
 <div class="container">
 
     <div class="grid"></div>
@@ -51,6 +53,18 @@
 <script src="js/masonry.pkgd.min.js"></script>
 <script src="js/imagesloaded.pkgd.js"></script>
 <script src="js/main.js"></script>
+<script>
+
+    $('#updateMyPinsButton').click(function () {
+
+        $.post('/updateMyPins', function (data, status) {
+
+        })
+    });
+
+</script>
+
+
 </body>
 
 </html>

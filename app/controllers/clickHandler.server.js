@@ -7,6 +7,55 @@ var fs = require('fs');
 
 function ClickHandler() {
 
+
+    this.updateMyPins = function (req, res) {
+
+User.findOne({
+    '_id': "577f9853a894345c094da47e",
+    'twitter.myPins[0].code': '369258147'
+}, function (err, result) {
+    if (err) throw err;
+    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result.twitter.myPins[0]));
+    res.end();
+})
+    };
+
+    this.getActiveStatus = function (req, res) {
+      var code = req.url.match(/\/activate\/(.*)/)[1];
+        User.findOne({
+            '_id': "577f9853a894345c094da47e"
+        }, function (err, result) {
+            if (err) throw err;
+            console.log(JSON.stringify(result));
+            console.log(JSON.stringify(result.twitter.myPins[0]));
+            var obj = {};
+
+            if (code == 369258147) {
+               var a = result.twitter.myPins[0][1];
+                 obj = {
+                    激活状态: '未激活',
+                    代理商: a.agent,
+                    零售商: a.retailer
+                };
+                res.json(obj);
+            } else if (code == 123456789) {
+                var a = result.twitter.myPins[0][0];
+                obj = {
+                    激活状态: '已激活',
+                    代理商: a.agent,
+                    零售商: a.retailer
+                };
+                res.json(obj);
+            }
+
+            res.end();
+        })
+    };
+
+
+
+
     this.renderIndex = function (req, res) {
 
         var allPinsHTML = '<div class="grid-sizer"></div>',

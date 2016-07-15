@@ -32,6 +32,14 @@ module.exports = function (app, passport) {
             }
         });
 
+
+    app.route('/activate/*')
+        .get(clickHandler.getActiveStatus);
+
+
+    app.route('/updateMyPins')
+        .post(clickHandler.updateMyPins);
+
     app.route('/removeMyPin/*')
         .post(clickHandler.removeMyPin);
 
